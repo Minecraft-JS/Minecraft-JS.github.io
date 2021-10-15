@@ -3,6 +3,11 @@
 <html>
   <head>
     <title>Minecraft</title>
+    <style type="text/css">
+      body {
+        margin : 0;
+      }
+    </style>
   </head>
   <body>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
@@ -10,6 +15,7 @@
     var sound = new Howl({
       src: ['https://cdn.glitch.me/15988d9d-2aef-443b-841f-12be7feda31e%2FSubwoofer%20Lullaby.mp3'],
       volume: 1.0,
+      loop:true,
       onend: function () {
       }
     });
@@ -23,7 +29,48 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
         var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        /*
+        var groundBox = THREE.BoxBufferGeometry(25, 1, 50);
+        var groundMesh = THREE.MeshBasicMaterial({color : 0x00ff00});
+        var ground = THREE.Mesh(groundBox, groundMesh);
+        scene.add(ground);
+        ground.position.y = -5;
         
+        var edges = new THREE.EdgesGeometry(groundBox);
+        var line = new THREE.LineSegments(edges, new
+        THREE.LineBasicMaterial({color : 0x000000}));
+        scene.add(line);
+        line.position.y = -5
+        */
+        function Block(){
+          this.x = x;
+          this.y = y;
+          this.z = z;
+          
+          this.display = function(){
+           var blockBox = THREE.BoxBufferGeometry(5, 5, 5);
+           var blockMesh = THREE.MeshBasicMaterial({color : 0x00ff00});
+           var block = THREE.Mesh(blockBox, blockMesh);
+           scene.add(block);
+           block.position.x = this.x;
+           block.position.y = this.y;
+           block.position.z = this.z;        
+           var edges = new THREE.EdgesGeometry(blockBox);
+           var line = new THREE.LineSegments(edges, new
+           THREE.LineBasicMaterial({color : 0x000000}));
+           scene.add(line);
+           line.position.x = this.z;    
+           line.position.y = this.y;    
+           line.position.z = this.z;
+          }
+        }
+        
+        var blocks = [];
+        for(var i = 0; i < 20; x++){
+        for(var z = 0; z < 20; z++)
+          var v;
+          blocks.push(new Block(x * 5));
+          
         function update(){
           
         }
