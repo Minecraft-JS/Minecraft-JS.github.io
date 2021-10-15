@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,7 +11,6 @@
       src: ['https://cdn.glitch.me/15988d9d-2aef-443b-841f-12be7feda31e%2FSubwoofer%20Lullaby.mp3'],
       volume: 1.0,
       onend: function () {
-        alert('We finished with the setup!');
       }
     });
     sound.play()
@@ -27,6 +27,24 @@
         function update(){
           
         }
+        
+        window.addEventListener("resize", function(){
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+        
+        function render(){
+         renderer.render(scene, camera);
+        }
+        
+        function GameLoop(){
+         requestAnimationFrame(GameLoop);
+         update();
+         render();
+        }
+        
+        GameLoop();
     </script>
   </body>
 </html>
