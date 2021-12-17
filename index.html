@@ -22,75 +22,8 @@
 </script>
     <script src = "three.js"></script>
     <script src = "perlin.js"></script>
-      <script type = "text/javascript">
-        var scene = THREE.Scene();
-        var renderer = THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        /*
-        var groundBox = THREE.BoxBufferGeometry(25, 1, 50);
-        var groundMesh = THREE.MeshBasicMaterial({color : 0x00ff00});
-        var ground = THREE.Mesh(groundBox, groundMesh);
-        scene.add(ground);
-        ground.position.y = -5;
-        
-        var edges = new THREE.EdgesGeometry(groundBox);
-        var line = new THREE.LineSegments(edges, new
-        THREE.LineBasicMaterial({color : 0x000000}));
-        scene.add(line);
-        line.position.y = -5
-        */
-        function Block(){
-          this.x = x;
-          this.y = y;
-          this.z = z;
-          
-          this.display = function(){
-           var blockBox = THREE.BoxBufferGeometry(5, 5, 5);
-           var blockMesh = THREE.MeshBasicMaterial({color : 0x00ff00});
-           var block = THREE.Mesh(blockBox, blockMesh);
-           scene.add(block);
-           block.position.x = this.x;
-           block.position.y = this.y;
-           block.position.z = this.z;        
-           var edges = new THREE.EdgesGeometry(blockBox);
-           var line = new THREE.LineSegments(edges, new
-           THREE.LineBasicMaterial({color : 0x000000}));
-           scene.add(line);
-           line.position.x = this.z;    
-           line.position.y = this.y;    
-           line.position.z = this.z;
-          }
-        }
-        
-        var blocks = [];
-        for(var i = 0; i < 20; x++){
-        for(var z = 0; z < 20; z++)
-          var v;
-          blocks.push(new Block(x * 5));
-          
-        function update(){
-          
-        }
-        
-        window.addEventListener("resize", function(){
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-        });
-        
-        function render(){
-         renderer.render(scene, camera);
-        }
-        
-        function GameLoop(){
-         requestAnimationFrame(GameLoop);
-         update();
-         render();
-        }
-        
-        GameLoop();
+    <script type = "text/javascript">
+      var scene = new THREE.scene();
     </script>
   </body>
 </html>
